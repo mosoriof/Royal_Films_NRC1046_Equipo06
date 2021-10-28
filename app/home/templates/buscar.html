@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% set active_page = "Confiteria" %}
+
+{% block title %} ROYAL FILMS - Confitería {% endblock %}
+
+{% block body %}
+<!-- Hero Start -->
+<div class="container-fluid bg-primary p-5 bg-hero mb-5">
+    <div class="row py-1">
+        <div class="col-12 text-center">
+            <h1 class="display-4 text-uppercase text-white mb-md-4">Resultados de búsqueda</h1>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+<div class="container-fluid p-5">
+
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </form>
+</div>
+{% endblock %}

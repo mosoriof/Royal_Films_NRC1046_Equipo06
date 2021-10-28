@@ -1,0 +1,158 @@
+{% extends 'base_dashboard.html' %}
+{% set active_navItem = "addMovie" %}
+{% block title %} Dashboard - Movies {% endblock %}
+
+{% block body %}
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Agregar película</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="./">Home</a></li>
+            <li class="breadcrumb-item">Gestión de películas</li>
+            <li class="breadcrumb-item active" aria-current="page">Agregar película</li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <form action="/admin/movies/add/" method="POST" novalidate>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    {{ form.movieTitle.label }}
+                    {{ form.movieTitle(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.movieTitle.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.moviePoster.label }}
+                    {{ form.moviePoster(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.moviePoster.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.movieTrailer.label }}
+                    {{ form.movieTrailer(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.movieTrailer.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-12">
+                    {{ form.movieSynopsis.label }}
+                    {{ form.movieSynopsis(class="form-control", rows="5", placeholder="")
+                    }}
+                    {% for error in form.movieSynopsis.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.movieLength.label }}
+                    {{ form.movieLength(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.movieLength.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.movieFormat.label }}
+                    {{ form.movieFormat(class="form-control", placeholder="")
+                    }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.movieGenre.label }}
+                    {{ form.movieGenre(class="form-control", placeholder="")
+                    }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.movieRating.label }}
+                    {{ form.movieRating(class="form-control", placeholder="")
+                    }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.movieCast.label }}
+                    {{ form.movieCast(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.movieCast.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6" id="simple-date1">
+                    {{ form.movieRelease.label }}
+                    <div class="input-group date">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                        </div>
+                        {{ form.movieRelease(class="form-control", value="28/10/2021", placeholder="")
+                        }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <a href="/admin/movies/add/" class="btn btn-secondary">Cancelar</a>
+                {{ form.hidden_tag()}}
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<!-- Select2 -->
+<script src="{{ url_for('static', filename='js/select2.min.js') }}"></script>
+<!-- Bootstrap Datepicker -->
+<script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+<!-- Javascript for this page -->
+<script>
+    $(document).ready(function () {
+
+
+        $('.select2-single').select2();
+
+        // Select2 Single  with Placeholder
+        $('.select2-single-placeholder').select2({
+            placeholder: "Select a Province",
+            allowClear: true
+        });
+
+        // Select2 Multiple
+        $('.select2-multiple').select2();
+
+        // Bootstrap Date Picker
+        $('#simple-date1 .input-group.date').datepicker({
+            format: 'dd/mm/yyyy',
+            todayBtn: 'linked',
+            todayHighlight: true,
+            autoclose: true,
+        });
+
+        $('#simple-date2 .input-group.date').datepicker({
+            startView: 1,
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            todayHighlight: true,
+            todayBtn: 'linked',
+        });
+
+        $('#simple-date3 .input-group.date').datepicker({
+            startView: 2,
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            todayHighlight: true,
+            todayBtn: 'linked',
+        });
+
+        $('#simple-date4 .input-daterange').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            todayHighlight: true,
+            todayBtn: 'linked',
+        });
+    });
+</script>
+
+{% endblock %}

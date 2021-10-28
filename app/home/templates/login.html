@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %} ROYAL FILMS - Iniciar Sesión {% endblock %}
+
+{% block body %}
+<!-- Hero Start -->
+<div class="container-fluid bg-primary p-5 bg-hero mb-5">
+    <div class="row py-1">
+        <div class="col-12 text-center">
+            <h1 class="display-4 text-uppercase text-white mb-md-4">Iniciar sesión</h1>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center mb-5">
+            {% for message in get_flashed_messages(category_filter=['errorLogin']) %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+
+            <form action="/login" method="POST" novalidate>
+                <img class="mb-4" src="{{ url_for('static', filename='home/img/login.png') }}" alt="" width="72" height="72">
+                <h1 class="h5 mb-3 fw-normal">Entra con tu usuario registrado</h1>
+
+                <div class="form-floating mb-3">
+                    {{ form.user(class="form-control", placeholder="name@example.com") }} {{ form.user.label }}
+                    {% for error in form.user.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-floating">
+                    {{ form.password(class="form-control", placeholder="Password") }} {{ form.password.label }}
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                
+                <div class="checkbox mb-3 mt-2">
+                    {{ form.remember_me() }} {{ form.remember_me.label }}
+                </div>
+                {{ form.hidden_tag()}}
+                {{ form.submit(class="w-100 btn btn-lg btn-primary") }}
+                <div class="mt-4">
+                    <div class="w-100 text-center">
+                        <p class="mb-1">¿No estás registrado? Regístrate <a href="register">aquí</a></p>
+                        <p><a href="#">Olvidé mi contraseña</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

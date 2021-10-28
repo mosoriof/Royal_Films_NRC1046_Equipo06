@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="img/logo/logo.png" rel="icon">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='admin/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='admin/css/bootstrap2.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- Select2 -->
+    <link href="{{ url_for('static', filename='admin/css/select2.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- Bootstrap DatePicker -->
+    <link href="{{ url_for('static', filename='admin/css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='admin/css/ruang-admin.min.css') }}" rel="stylesheet">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <!--Start Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+                href="{{ url_for('admin.admin_dashboard') }}">
+                <div class="sidebar-brand-icon">
+                    <img src="{{ url_for('static', filename='admin/img/RF.png') }}" class="logo">
+                </div>
+                <div class="sidebar-brand-text mx-3">ROYAL FILMS</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('admin.admin_dashboard') }}">
+                    <i class="fas fa-user-circle fa-5x"></i>
+                    <span class=text-uppercase>Administrador ID</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <li class="nav-item {{ 'active' if active_navItem == 'Dashboard' else '' }}">
+                <a class="nav-link" href="{{ url_for('admin.admin_dashboard') }}">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <!-- <div class="sidebar-heading">
+                Features
+            </div> -->
+            <li class="nav-item {{ 'active' if (active_navItem == 'Movies' or active_navItem == 'addMovie') else '' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMovie"
+                    aria-expanded="true" aria-controls="collapseMovie">
+                    <i class="fas fa-film"></i>
+                    <span>Gestión de Películas</span>
+                </a>
+                <div id="collapseMovie" class="collapse" aria-labelledby="headingMovie" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ 'active' if active_navItem == 'Movies' else '' }}"
+                            href="{{ url_for('admin.list_movies') }}">Listado Películas</a>
+                        <a class="collapse-item {{ 'active' if active_navItem == 'addMovie' else '' }}"
+                            href="{{ url_for('admin.add_movie') }}">Agregar Película</a>
+                    </div>
+                </div>
+            </li>
+            <li
+                class="nav-item {{ 'active' if (active_navItem == 'Showtimes' or active_navItem == 'addShowtime') else '' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseScreening"
+                    aria-expanded="true" aria-controls="collapseScreening">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Gestión de Funciones</span>
+                </a>
+                <div id="collapseScreening" class="collapse" aria-labelledby="headingScreening"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ 'active' if active_navItem == 'Showtimes' else '' }}"
+                            href="{{ url_for('admin.list_showtimes') }}">Listado Funciones</a>
+                        <a class="collapse-item {{ 'active' if active_navItem == 'addShowtime' else '' }}"
+                            href="{{ url_for('admin.add_showtimes') }}">Agregar Función</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item {{ 'active' if (active_navItem == 'Users' or active_navItem == 'Admins') else '' }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+                    aria-expanded="true" aria-controls="collapseUsers">
+                    <i class="fas fa-users"></i>
+                    <span>Gestión de Usuarios</span>
+                </a>
+                <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item {{ 'active' if active_navItem == 'Users' else '' }}"
+                            href="{{ url_for('admin.list_users') }}">Usuarios</a>
+                        <a class="collapse-item {{ 'active' if active_navItem == 'Admins' else '' }}"
+                            href="{{ url_for('admin.list_admins') }}">Administrativos</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ 'active' if active_navItem == 'Bookings' else '' }}"
+                    href="{{ url_for('admin.bookings') }}">
+                    <i class="fas fa-ticket-alt"></i>
+                    <span>Gestión de Reservas</span>
+                </a>
+            </li>
+            <!-- <hr class="sidebar-divider"> -->
+            <hr class="sidebar-divider">
+            <div class="version" id="version-royaladmin"></div>
+        </ul>
+        <!-- End Sidebar -->
+
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <!-- Start TopBar -->
+                <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+                    <!-- hamburger button -->
+                    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <ul class="navbar-nav ml-auto">
+                        <!-- search button -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-1 small"
+                                            placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2"
+                                            style="border-color: #3f51b5;">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- perfil menu -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="{{ url_for('user.perfil') }}" id="userDropdown"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user-alt"></i>
+                                <span class="ml-2 d-none d-lg-inline text-white small">MI PERFIL</span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Perfil
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Cambiar contraseña
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal"
+                                    data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Cerrar sesión
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End TopBar -->
+
+                <!-- Start Container Fluid-->
+                <div class="container-fluid" id="container-wrapper">
+
+
+                    {% block body %}
+
+                    {% endblock %}
+                    <!-- Modal Logout -->
+                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to logout?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-primary"
+                                        data-dismiss="modal">Cancel</button>
+                                    <a href="login.html" class="btn btn-primary">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--- End Container Fluid-->
+            </div>
+
+            <!-- Start Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto py-2">
+                    <div class="copyright text-center my-auto">
+                        <span>copyright &copy;
+                            <script> document.write(new Date().getFullYear());</script> - <b>Royal Films</b>
+                        </span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End Footer -->
+        </div>
+    </div>
+
+    <!-- Scroll to top -->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ruang-admin.min.js') }}"></script>
+    
+    {% block script %}{% endblock %}
+
+</body>
+
+</html>

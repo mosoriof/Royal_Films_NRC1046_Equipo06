@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %} ROYAL FILMS - Registro {% endblock %}
+
+{% block body %}
+<!-- Hero Start -->
+<div class="container-fluid bg-primary p-5 bg-hero mb-5">
+    <div class="row py-1">
+        <div class="col-12 text-center">
+            <h1 class="display-4 text-uppercase text-white mb-md-4">Registro</h1>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6 text-center mb-5">
+
+            <form action="/register" method="POST" novalidate>
+                <img class="mb-4" src="{{ url_for('static', filename='home/img/login.png') }}" alt="" width="72"
+                    height="72">
+                <h1 class="h5 mb-3 fw-normal">Regístrate como miembro de Royal Films</h1>
+
+                <div class="form-floating mb-3">
+                    {{ form.userName(class="form-control", placeholder="Name") }} {{ form.userName.label }}
+                    {% for error in form.userName.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.userLastName(class="form-control", placeholder="LastName") }} {{ form.userLastName.label }}
+                    {% for error in form.userLastName.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.userID(class="form-control", placeholder="ID") }} {{ form.userID.label }}
+                    {% for error in form.userID.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.userPhone(class="form-control", placeholder="Phone") }} {{ form.userPhone.label }}
+                    {% for error in form.userPhone.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.userEmail(class="form-control", placeholder="name@example.com") }} {{ form.userEmail.label
+                    }}
+                    {% for error in form.userEmail.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.userPassword(class="form-control", placeholder="Password") }} {{ form.userPassword.label }}
+                    {% for error in form.userPassword.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-floating mb-3">
+                    {{ form.userPasswordConfirm(class="form-control", placeholder="Confirm Password") }} {{
+                    form.userPasswordConfirm.label }}
+                    {% for error in form.userPasswordConfirm.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="checkbox mb-3">
+                    {{ form.acceptConditions() }} {{ form.acceptConditions.label }}
+                </div>
+                {{ form.hidden_tag()}}
+                {{ form.submit(class="w-100 btn btn-lg btn-primary") }}
+                <div class="mt-4">
+                    <div class="w-100 text-center">
+                        <ul class="list-inline mb-5">
+                            <li class="list-inline-item"><a href="#">Términos y Condiciones</a></li>
+                            <li class="list-inline-item"><a href="#">Tratamiento de datos</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

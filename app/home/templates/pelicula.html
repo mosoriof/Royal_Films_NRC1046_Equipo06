@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block title %} ROYAL FILMS - Película {% endblock %}
+
+{% block body %}
+
+<!-- Programe Start -->
+<div class="container-fluid programe position-relative px-5 mt-5" style="margin-bottom: 180px;">
+    <div class="row g-5 gb-5">
+        <div class="col-lg-4 col-md-6">
+            <div class="bg-light rounded p-5">
+                <img class="img-fluid" src="https://image.tmdb.org/t/p/w500/ymTPj60S2T9HoQIsh4VBLu3jDM5.jpg" alt="">
+                <!-- <img class="img-fluid" src="{{ url_for('static', filename=movie.poster_file) }}" alt=""> -->
+                <h3 class="text-uppercase my-2 text-center">{{ movie.title }}</h3>
+                <p class="text-body mb-2 text-center">{{ movie.genre }}</p>
+                <h6 class="text-primary text-uppercase">Sinopsis</h6>
+                <h6 class="text-body mb-4">{{ movie.synopsis }}</h6>
+                <h6 class="text-primary text-uppercase">Reparto</h6>
+                <h6 class="text-body mb-4">{{ movie.cast }}</h6>
+                <h6 class="text-primary text-uppercase">Clasificación</h6>
+                <h6 class="text-body mb-4">{{ movie.rating }}</h6>
+
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-6">
+            <div class="bg-light rounded text-center p-5">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe width="640" height="360"
+                        src="https://www.youtube.com/embed/{{ movie.trailer_url }}?autoplay=0&amp;controls=0&amp;rel=0&amp;showinfo=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;disablekb=1&amp;playsinline=1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+
+            </div>
+
+            <!-- Detalles películas Start -->
+            <div class="container-fluid p-5">
+                <div class="mb-5 text-center">
+                    <h5 class="text-primary text-uppercase">Horarios disponibles</h5>
+                </div>
+                <div class="tab-class text-center">
+                    <ul
+                        class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">11
+                                Lun</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">12 Mar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-3">13 Mie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-4">14 Jue</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-5">15 Vie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-6">16 Sab</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-7">17 Dom</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row g-5 justify-content-center">
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>1:30
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>4:00
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>6:30
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>9:10
+                                            PM</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane fade p-0">
+                            <div class="row g-5 justify-content-center">
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>1:30
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>3:00
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>5:30
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>8:10
+                                            PM</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-3" class="tab-pane fade p-0">
+                            <div class="row g-5 justify-content-center">
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>1:30
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>4:00
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>6:30
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>9:10
+                                            PM</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-4" class="tab-pane fade p-0">
+                            <div class="row g-5 justify-content-center">
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>2:30
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>4:15
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>7:30
+                                            PM</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-5" class="tab-pane fade p-0">
+                            <div class="row g-5 justify-content-center">
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>3:00
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>6:30
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>9:30
+                                            PM</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-6" class="tab-pane fade p-0">
+                            <div class="row g-5 justify-content-center">
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>2:00
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>4:30
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>6:10
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>8:15
+                                            PM</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-7" class="tab-pane fade p-0">
+                            <div class="row g-5 justify-content-center">
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>10:30
+                                            AM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>2:00
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>4:30
+                                            PM</span></a>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-sm-6">
+                                    <a href="funcion" class="bg-light rounded text-center py-2 px-3"><span>6:10
+                                            PM</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Detalles películas End -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

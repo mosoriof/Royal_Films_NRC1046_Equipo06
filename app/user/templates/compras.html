@@ -1,0 +1,145 @@
+{% extends 'base_user.html' %}
+
+{% block title %} ROYAL FILMS - Perfil {% endblock %}
+
+{% block body %}
+
+<!-- Reseñas Start -->
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-3 px-sm-2 px-0 bg-dark">
+            <div class="d-flex justify-content-center"><i class="fas fa-user-circle fa-5x" style="color:#BDBDBF"></i>
+            </div>
+            <h5 class="text-secondary text-uppercase text-center py-2">{{ infoUser }}</h5>
+            <!-- <h5 class="text-secondary text-uppercase text-center py-2">Usuario ID</h5> -->
+
+            <!-- Sidebar Nav Items Start -->
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a class="nav-link align-middle px-2" href="{{ url_for('user.perfil') }}">
+                            <i class="fas fa-user-alt"></i> <span class="ms-3 d-none d-sm-inline">Mi Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link active align-middle px-2" href="{{ url_for('user.compras') }}">
+                            <i class="fas fa-shopping-cart"></i> <span class="ms-3 d-none d-sm-inline">Mis
+                                Compras</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link align-middle px-2" href="{{ url_for('user.comentarios') }}">
+                            <i class="fas fa-comment"></i> <span class="ms-3 d-none d-sm-inline">Mis Reseñas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link align-middle px-2" href="{{ url_for('user.favoritos') }}">
+                            <i class="fas fa-heart"></i> <span class="ms-3 d-none d-sm-inline">Mis Favoritos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link align-middle px-2" href="{{ url_for('user.cambioPass') }}">
+                            <i class="fas fa-key"></i> <span class="ms-3 d-none d-sm-inline">Cambiar contraseña</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mt-5">
+                        <hr>
+                    <li class="nav-item">
+                        <a href="{{ url_for('user.logout') }}" class="nav-link align-middle px-2">
+                            <i class="fas fa-sign-out-alt"></i> <span class="ms-3 d-none d-sm-inline">Cerrar
+                                Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Sidebar Nav Items End -->
+
+        <div class="col py-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!-- Body Content Start -->
+                    <div class="col-9 text-justify mb-5">
+                        <div class="my-5">
+                            <h5>Mis Compras</h5>
+                        </div>
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>
+                                    #
+                                </th>
+                                <th>
+                                    Película
+                                </th>
+                                <th>
+                                    Fecha
+                                </th>
+                                <th>
+                                    # tiquetes
+                                </th>
+                                <th>
+                                    Sillas
+                                </th>
+                                <th>
+
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        El Padre
+                                    </td>
+                                    <td>
+                                        2021-10-12 16:30:00
+                                    </td>
+                                    <td>
+                                        2
+                                    </td>
+                                    <td class="text-primary">
+                                        H10, H11
+                                    </td>
+                                    <td class="text-primary">
+                                        <a href="{{ url_for('user.comentarios_new') }}" class="btn btn-sm btn-primary">Comentar</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        Sin Tiempo para Morir
+                                    </td>
+                                    <td>
+                                        2021-10-02 19:45:00
+                                    </td>
+                                    <td>
+                                        3
+                                    </td>
+                                    <td class="text-primary">
+                                        J12, J13, J14
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('user.comentarios_new') }}" class="btn btn-sm btn-primary">Comentar</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Body Content End -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reseñas End -->
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends 'base_user.html' %}
+
+{% block title %} ROYAL FILMS - Perfil {% endblock %}
+
+{% block body %}
+
+<!-- Perfil Start -->
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-3 px-sm-2 px-0 bg-dark">
+            <div class="d-flex justify-content-center"><i class="fas fa-user-circle fa-5x" style="color:#BDBDBF"></i>
+            </div>
+            <h5 class="text-secondary text-uppercase text-center py-2">{{ infoUser }}</h5>
+            <!-- <h5 class="text-secondary text-uppercase text-center py-2">Usuario ID</h5> -->
+
+            <!-- Sidebar Nav Items Start -->
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active align-middle px-2" href="{{ url_for('user.perfil') }}">
+                            <i class="fas fa-user-alt"></i> <span class="ms-3 d-none d-sm-inline">Mi Perfil</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link align-middle px-2" href="{{ url_for('user.compras') }}">
+                            <i class="fas fa-shopping-cart"></i> <span class="ms-3 d-none d-sm-inline">Mis
+                                Compras</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link align-middle px-2" href="{{ url_for('user.comentarios') }}">
+                            <i class="fas fa-comment"></i> <span class="ms-3 d-none d-sm-inline">Mis Reseñas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link align-middle px-2" href="{{ url_for('user.favoritos') }}">
+                            <i class="fas fa-heart"></i> <span class="ms-3 d-none d-sm-inline">Mis Favoritos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link align-middle px-2" href="{{ url_for('user.cambioPass') }}">
+                            <i class="fas fa-key"></i> <span class="ms-3 d-none d-sm-inline">Cambiar contraseña</span>
+                        </a>
+                    </li>
+                    <!-- <hr> -->
+                    <li class="nav-item mt-5">
+                        <hr>
+                        <a href="{{ url_for('user.logout') }}" class="nav-link align-middle px-2">
+                            <i class="fas fa-sign-out-alt"></i> <span class="ms-3 d-none d-sm-inline">Cerrar
+                                Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Sidebar Nav Items End -->
+
+        <div class="col py-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!-- Body Content Start -->
+                    <div class="col-9 text-justify mb-5">
+                        {% for message in get_flashed_messages() %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+
+                        <div class="my-5">
+                            <h5>Información personal</h5>
+                        </div>
+                        <form>
+                            <div class="row g-2">
+                                <div class="col-6 form-floating mb-1">
+                                    <input type="text" class="form-control" id="floatingName" placeholder="Nombre"
+                                        style="height: 45px">
+                                    <label for="floatingName">Nombre</label>
+                                </div>
+                                <div class="col-6 form-floating mb-1">
+                                    <input type="text" class="form-control" id="floatingLastName" placeholder="LastName"
+                                        style="height: 45px">
+                                    <label for="floatingLastName">Apellidos</label>
+                                </div>
+                                <div class="form-floating mb-1">
+                                    <input type="text" class="form-control" id="floatingID" placeholder="ID"
+                                        style="height: 45px">
+                                    <label for="floatingID">Documento</label>
+                                </div>
+                                <div class="form-floating mb-1">
+                                    <input type="text" class="form-control" id="floatingPhone" placeholder="Phone"
+                                        style="height: 45px">
+                                    <label for="floatingPhone">Celular</label>
+                                </div>
+                                <div class="form-floating mb-1">
+                                    <input type="email" class="form-control" id="floatingInput"
+                                        placeholder="name@example.com" style="height: 45px">
+                                    <label for="floatingInput">Correo electrónico</label>
+                                </div>
+                                <div class="form-floating mb-1">
+                                    <input type="password" class="form-control" id="floatingPassword"
+                                        placeholder="Password" style="height: 45px">
+                                    <label for="floatingPassword">Contraseña</label>
+                                </div>
+                                <div class="form-floating mb-1">
+                                    <input type="password" class="form-control" id="floatingPasswordConfirm"
+                                        placeholder="Password" style="height: 45px">
+                                    <label for="floatingPasswordConfirm">Confirmar contraseña</label>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn btn-md btn-primary float-end" type="submit">Actualizar
+                                        datos</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Body Content End -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Perfil End -->
+
+{% endblock %}
