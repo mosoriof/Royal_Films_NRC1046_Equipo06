@@ -44,26 +44,10 @@ def admin_login():
     return render_template('admin.html', form=form)
 
 
-@admin.route('/dashboard/', methods=["GET", "POST"])
+@admin.route('/dashboard/')
 @loginAdmin_required
 def admin_dashboard():
-    form = MovieForm()
-    if request.method == 'POST' and form.validate_on_submit():
-        titulo = escape(request.form['movieTitle'])
-        poster = escape(request.form['moviePoster'])
-        trailer = escape(request.form['movieTrailer'])
-        sinopsis = escape(request.form['movieSynopsis'])
-        duracion = escape(request.form['movieLength'])
-        formato = escape(request.form['movieFormat'])
-        genero = escape(request.form['movieGenre'])
-        clasif = escape(request.form['movieRating'])
-        elenco = escape(request.form['movieCast'])
-        estreno = escape(request.form['movieRelease'])
-        
-        movie = Movie(title=titulo, poster_file=poster, trailer_url=trailer,synopsis=sinopsis, length=duracion,format=formato, genre=genero, rating=clasif, cast=elenco, release=estreno, status='active')
-        db.session.add(movie)
-        db.session.commit()
-    return render_template('admin_dashboard.html', form=form)
+    return render_template('admin_dashboard.html')
 
 
 @admin.route('/logout')
@@ -96,6 +80,7 @@ def add_movie():
         movie = Movie(title=titulo, poster_file=poster, trailer_url=trailer,synopsis=sinopsis, length=duracion,format=formato, genre=genero, rating=clasif, cast=elenco, release=estreno, status='new')
         db.session.add(movie)
         db.session.commit()
+        return redirect(url_for('admin.list_movies'))
     return render_template('add_movie.html', form=form)
 
 @admin.route('/showtimes/', methods=["GET", "POST"])
