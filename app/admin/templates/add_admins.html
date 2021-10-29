@@ -1,0 +1,125 @@
+{% extends 'base_dashboard.html' %}
+{% set active_navItem = "addAdmins" %}
+{% block title %} Dashboard - Admins {% endblock %}
+
+{% block body %}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Agregar usuario administrativo</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./">Home</a></li>
+        <li class="breadcrumb-item">Gestión de usuarios</li>
+        <li class="breadcrumb-item active" aria-current="page">Administrativos</li>
+    </ol>
+</div>
+
+    <div class="container">
+        <form action="" method="POST" novalidate>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.userID.label }}
+                    {{ form.userID(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.userID.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.userName.label }}
+                    {{ form.userName(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.userName.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.userLastName.label }}
+                    {{ form.userLastName(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.userLastName.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.userPhone.label }}
+                    {{ form.userPhone(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.userPhone.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.userEmail.label }}
+                    {{ form.userEmail(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.userEmail.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.userPassword.label }}
+                    {{ form.userPassword(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.userPassword.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.userPasswordConfirm.label }}
+                    {{ form.userPasswordConfirm(class="form-control", placeholder="")
+                    }}
+                    {% for error in form.userPasswordConfirm.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.userStatus.label }}
+                    {{ form.userStatus(class="form-control", placeholder="")
+                    }}
+                </div>
+    
+            </div>
+
+            <div class="mb-5">
+                <a href="/admin/users-admin/" class="btn btn-secondary">Cancelar</a>
+                {{ form.hidden_tag()}}
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+
+    {% endblock %}
+
+    
+{% block script %}
+<!-- Select2 -->
+<script src="{{ url_for('static', filename='js/select2.min.js') }}"></script>
+<!-- Bootstrap Datepicker -->
+<script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+<!-- Javascript for this page -->
+<script>
+    $(document).ready(function () {
+
+
+        $('.select2-single').select2();
+
+        // Select2 Single  with Placeholder
+        $('.select2-single-placeholder').select2({
+            placeholder: "Select a Province",
+            allowClear: true
+        });
+
+        // Select2 Multiple
+        $('.select2-multiple').select2();
+
+        // Bootstrap Date Picker
+        $('#simple-date1 .input-group.date').datepicker({
+            format: 'dd/mm/yyyy',
+            todayBtn: 'linked',
+            todayHighlight: true,
+            autoclose: true,
+        });
+    });
+</script>
+
+{% endblock %}

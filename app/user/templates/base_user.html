@@ -95,7 +95,7 @@
                         </div>
                         {% if user == "true" %}
                         <div class="navbar-nav">
-                            <a href="perfil" class="nav-item nav-link"><i class="fas fa-user-alt"></i><span
+                            <a href="{{ url_for('user.perfil') }}" class="nav-item nav-link"><i class="fas fa-user-alt"></i><span
                                     class="ms-3 d-none d-sm-inline">Mi Perfil</span></a>
                         </div>
                         {% else %}

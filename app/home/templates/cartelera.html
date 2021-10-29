@@ -20,167 +20,28 @@
 <div class="container-fluid p-5">
 
     <div class="row g-5">
+        {% for m in movies %}
         <div class="col-lg-3 col-md-6">
             <div class="team-item position-relative">
                 <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster3.jpg') }}" alt="">
+                    <img class="img-fluid w-100" src="https://image.tmdb.org/t/p/w500/{{ m.poster_file }}" alt="">
                     <div class="team-overlay">
                         <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="/pelicula/1"><i
+                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">{{ m.length }}</a>
+                            <a class="btn btn-light btn-square rounded-circle mx-1" href="{{url_for('home.pelicula', id = m.movie_id)}}"><i
                                     class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</a></a>
+                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="far fa-heart"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
                     style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">Los locos addams 2</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Animación</h6>
+                    <h5 class="text-light">{{ m.title }}</h5>
+                    <h6 class="text-uppercase text-secondary m-0">{{ m.genre }}</h6>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="team-item position-relative">
-                <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster1.png') }}" alt="">
-                    <div class="team-overlay">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
-                                    class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                    style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">Venom: Carnage Liberado</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Acción</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="team-item position-relative">
-                <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster2.jpg') }}" alt="">
-                    <div class="team-overlay">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
-                                    class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                    style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">Sin Tiempo para Morir</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Acción</h6>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-            <div class="team-item position-relative">
-                <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster4.jpg') }}" alt="">
-                    <div class="team-overlay">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
-                                    class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                    style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">Shang-Chi</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Acción</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="team-item position-relative">
-                <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster5.jpg') }}" alt="">
-                    <div class="team-overlay">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
-                                    class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                    style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">Paw Patrol</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Infantil</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="team-item position-relative">
-                <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster6.jpg') }}" alt="">
-                    <div class="team-overlay">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
-                                    class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                    style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">El Charlatán</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Drama</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="team-item position-relative">
-                <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster7.jpg') }}" alt="">
-                    <div class="team-overlay">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
-                                    class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                    style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">El Padre</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Drama</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="team-item position-relative">
-                <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster8.jpg') }}" alt="">
-                    <div class="team-overlay">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
-                                    class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                    style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">Rápidos y Furiosos 9</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Acción</h6>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 <!-- Cartelera End -->

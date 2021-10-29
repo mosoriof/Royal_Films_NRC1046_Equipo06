@@ -20,7 +20,7 @@
         <!-- Lista de películas -->
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Lista de películas</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Películas</h6>
             </div>
             <div class="table-responsive">
                 <table class="table align-items-center table-flush">
@@ -51,7 +51,10 @@
                             {% else %}
                                 <td><span class="badge badge-info">{{ m.status }}</span></td>
                             {% endif %}
-                            <td><a href="#" class="btn btn-sm btn-primary">Editar</a></td>
+                            <td><div><span class="mr-2"> <a href="{{ url_for('admin.edit_movie',id=m.movie_id) }}"> <i class="fas fa-pen"></i></a></span>
+                                <a href="{{ url_for('admin.delete_movie',id=m.movie_id) }}"> <i class="fas fa-trash-alt"></i></a>
+                            </div></td>
+                            
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -64,3 +67,4 @@
 <!--End Lista de Películas-->
 
 {% endblock %}
+

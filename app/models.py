@@ -56,7 +56,9 @@ class Screening(db.Model):
     time = db.Column(db.String(50))  
     number_seats = db.Column(db.String(50))
     movie_id = db.Column(db.Integer, db.ForeignKey('movie.movie_id'))
-
+    movie_hall = db.Column(db.String(50))
+    status = db.Column(db.String(50))
+    
     def __repr__(self):
         return '<Screening %r>' % self.screening_id
     

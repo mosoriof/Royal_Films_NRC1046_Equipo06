@@ -16,91 +16,30 @@
 
 <!-- Próximamente Start -->
 <div class="container-fluid p-5">
-    <!-- <div class="mb-5 text-center">
-        <h5 class="display-4 text-uppercase mb-0">Próximos estrenos</h5>
-    </div> -->
+   
     <div class="row g-5">
+        {% for m in movies %}
         <div class="col-lg-3 col-md-6">
             <div class="team-item position-relative">
                 <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster_prox1.jpg') }}" alt="">
+                    <img class="img-fluid w-100" src="https://image.tmdb.org/t/p/w500/{{ m.poster_file }}" alt="">
                     <div class="team-overlay">
                         <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
+                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">{{ m.length }}</a>
+                            <a class="btn btn-light btn-square rounded-circle mx-1" href="{{url_for('home.pelicula', id = m.movie_id)}}"><i
                                     class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
+                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="far fa-heart"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
                     style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">Duna</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Aventura</h6>
+                    <h5 class="text-light">{{ m.title }}</h5>
+                    <h6 class="text-uppercase text-secondary m-0">{{ m.genre }}</h6>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="team-item position-relative">
-                <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster_prox2.png') }}" alt="">
-                    <div class="team-overlay">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
-                                    class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                    style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">La Familia Monster 2</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Animación</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="team-item position-relative">
-                <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster_prox3.jpg') }}" alt="">
-                    <div class="team-overlay">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
-                                    class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                    style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">Al Límite</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Drama</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="team-item position-relative">
-                <div class="position-relative overflow-hidden rounded">
-                    <img class="img-fluid w-100" src="{{ url_for('static', filename='home/img/poster_prox4.jpg') }}" alt="">
-                    <div class="team-overlay">
-                        <div class="d-flex align-items-center justify-content-start">
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">90</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i
-                                    class="fa fa-film"></i></a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="#">12-A</i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="position-absolute start-0 bottom-0 w-100 rounded-bottom text-center p-4"
-                    style="background: rgba(34, 36, 41, .9);">
-                    <h5 class="text-light">El Último Duelo</h5>
-                    <h6 class="text-uppercase text-secondary m-0">Drama</h6>
-                </div>
-            </div>
-        </div>
-
+        {% endfor %}
     </div>
 </div>
 <!-- Próximamente End -->

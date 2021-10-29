@@ -5,7 +5,7 @@
 {% block body %}
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Lista de películas</h1>
+    <h1 class="h3 mb-0 text-gray-800">Listado funciones</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="./">Home</a></li>
         <li class="breadcrumb-item">Gestión de películas</li>
@@ -27,32 +27,32 @@
                             <th>ID</th>
                             <th>Película</th>
                             <th>Fecha</th>
-                            <th>Hora</th>
+                            <th>Horario</th>
                             <th># Tiquetes</th>
+                            <th>Sala</th>
                             <th>Status</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for m in movie %}
+                        {% for m in showTime %}
                         <tr>
+                            <td>{{ m.screening_id }}</td>
                             <td>{{ m.movie_id }}</td>
-                            <td>{{ m.title }}</td>
-                            <td>{{ m.release }}</td>
-                            <td>{{ m.length }}</td>
-                            <td>{{ m.rating }}</td>
-                            {% if m.status == 'active' %}
-                                <td><span class="badge badge-success">{{ m.status }}</span></td>
-                            {% elif m.status == 'inactive' %}
-                                <td><span class="badge badge-danger">{{ m.status }}</span></td>
-                            {% else %}
-                                <td><span class="badge badge-info">{{ m.status }}</span></td>
-                            {% endif %}
-                            <td><div> <a href="#"> <i class="fas fa-eye"></i></a>
-                                <a href="#"> <i class="fas fa-pen"></i></a>
-                            </div>
+                            <td>{{ m.date }}</td>
+                            <td>{{ m.time }}</td>
+                            <td>{{ m.number_seats }}</td>
+                            <td>{{ m.movie_hall }}</td>
 
-                                <a href="#" class="btn btn-sm btn-primary">Editar</a></td>
+                            {% if m.status == 'active' %}
+                            <td><span class="badge badge-success">{{ m.status }}</span></td>
+                            {% elif m.status == 'inactive' %}
+                            <td><span class="badge badge-danger">{{ m.status }}</span></td>
+                            {% endif %}
+                            <td><span class="mr-2">
+                                <a href="{{ url_for('admin.edit_showtime',id=m.screening_id) }}"> <i class="fas fa-pen"></i></a></span>
+                                <a href="{{ url_for('admin.delete_showtime',id=m.screening_id) }}"> <i class="fas fa-trash-alt"></i></a>
+                                </div> </td>
                         </tr>
                         {% endfor %}
                     </tbody>

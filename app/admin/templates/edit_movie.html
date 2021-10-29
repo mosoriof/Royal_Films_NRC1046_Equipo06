@@ -3,9 +3,9 @@
 {% block title %} Dashboard - Movies {% endblock %}
 
 {% block body %}
-
+<div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Agregar película</h1>
+        <h1 class="h3 mb-0 text-gray-800">Editar película</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./">Home</a></li>
             <li class="breadcrumb-item">Gestión de películas</li>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="container">
-        <form action="/admin/movies/add/" method="POST" novalidate>
+        <form action="" method="POST" novalidate>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     {{ form.movieTitle.label }}
@@ -86,7 +86,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-calendar"></i></span>
                         </div>
-                        {{ form.movieRelease(class="form-control", value="29/10/2021", placeholder="")
+                        {{ form.movieRelease(class="form-control")
                         }}
                     </div>
                 </div>
@@ -98,7 +98,7 @@
             </div>
 
             <div class="mb-5">
-                <a href="/admin/movies/" class="btn btn-secondary">Cancelar</a>
+                <a href="{{ url_for('admin.list_movies') }}"  class="btn btn-secondary">Cancelar</a>
                 {{ form.hidden_tag()}}
                 {{ form.submit(class="btn btn-primary") }}
             </div>

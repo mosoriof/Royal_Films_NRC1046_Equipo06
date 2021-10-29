@@ -11,7 +11,9 @@ SALT = 'BnM02I$#R7'
 
 @home.route('/', methods=["GET"])
 def index():
-    return render_template('index.html')
+    billboard = Movie.query.filter_by(status = 'active').all()
+    releases = Movie.query.filter_by(status = 'new').all()
+    return render_template('index.html', movies=billboard, news=releases)
 
 
 @home.route('/login', methods=["GET", "POST"])
@@ -55,7 +57,7 @@ def register():
         passw = SALT + passw + correo
         passw = generate_password_hash(passw)
         
-        user = User(user_id=usuario, name=nombre, lastname=apellido, email=correo, celNum=telefono, password=passw, role='user')
+        user = User(user_id=usuario, name=nombre, lastname=apellido, email=correo, celNum=telefono, password=passw, role='user', status='active')
         db.session.add(user)
         db.session.commit()
 
@@ -66,7 +68,8 @@ def register():
 
 @home.route('/cartelera')
 def cartelera():
-    return render_template('cartelera.html')
+    billboard = Movie.query.filter_by(status = 'active').all()
+    return render_template('cartelera.html', movies=billboard)
 
 
 @home.route('/pelicula/<int:id>')
@@ -76,7 +79,8 @@ def pelicula(id):
 
 @home.route('/proximos')
 def proximos():
-    return render_template('proximos.html')    
+    releases = Movie.query.filter_by(status = 'new').all()
+    return render_template('proximos.html', movies=releases)    
 
 @home.route('/buscar')
 def buscar():

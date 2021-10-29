@@ -4,6 +4,99 @@
 
 {% block body %}
 
-<h1>Dashboard</h1>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+    </ol>
+</div>
+<!-- Start Dashboard -->
+<div class="row mb-3">
+    <!-- En cartelera -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-sm font-weight-bold text-uppercase mb-1">Películas es cartelera</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{cont[0]}}</div>
+                        <div class="mt-2 mb-0 text-muted text-xs">
+                            <span class="mr-2">Última actualización</span>
+                            <span class="text-success"><i class="fa fa-calendar"></i> 28/10/2021</span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-film fa-2x text-success"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Próximos estrenos -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-sm font-weight-bold text-uppercase mb-1">Próximos Estrenos</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{cont[1]}}</div>
+                        <div class="mt-2 mb-0 text-muted text-xs">
+                            <span class="mr-2">Fecha próximo estreno</span>
+                            <span class="text-warning"><i class="fa fa-calendar"></i> 04/11/2021</span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-primary"></i>
+                        <!-- <i class="fas fa-shopping-cart fa-2x text-success"></i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New User Card Example -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-sm font-weight-bold text-uppercase mb-1">Funciones Activas</div>
+                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{cont[2]}}</div>
+                        <div class="mt-2 mb-0 text-muted text-xs">
+                            <span class="mr-2">Última actualización</span>
+                            <span class="text-success"><i class="fa fa-calendar"></i> 29/10/2021</span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-ticket-alt fa-2x text-warning"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pending Requests Card Example -->
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-sm font-weight-bold text-uppercase mb-1">Usuarios Activos</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{cont[2]}}</div>
+                        <div class="mt-2 mb-0 text-muted text-xs">
+                            <span class="mr-2">Última actualización</span>
+                            <span class="text-success"><i class="fa fa-calendar"></i> 29/10/2021</span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-info"></i>
+                        <!-- <i class="fas fa-comments fa-2x text-warning"></i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- End Dashboard -->
 
 {% endblock %}

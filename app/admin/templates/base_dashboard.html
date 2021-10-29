@@ -35,7 +35,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('admin.admin_dashboard') }}">
                     <i class="fas fa-user-circle fa-5x"></i>
-                    <span class=text-uppercase>Administrador ID</span></a>
+                    <span class=text-uppercase>{{ session['name'] }}</span>
+                </a>
+
             </li>
 
             <hr class="sidebar-divider">
@@ -91,6 +93,8 @@
                             href="{{ url_for('admin.list_users') }}">Usuarios</a>
                         <a class="collapse-item {{ 'active' if active_navItem == 'Admins' else '' }}"
                             href="{{ url_for('admin.list_admins') }}">Administrativos</a>
+                        <a class="collapse-item {{ 'active' if active_navItem == 'addAdmins' else '' }}"
+                            href="{{ url_for('admin.add_admins') }}">Agregar usuario</a>
                     </div>
                 </div>
             </li>
@@ -145,7 +149,7 @@
                             <a class="nav-link dropdown-toggle" href="{{ url_for('user.perfil') }}" id="userDropdown"
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-user-alt"></i>
-                                <span class="ml-2 d-none d-lg-inline text-white small">MI PERFIL</span>
+                                <span class="ml-2 d-none d-lg-inline text-white small">ADMINISTRADOR</span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -183,13 +187,13 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                                    <h5 class="modal-title" id="exampleModalLabelLogout">Cierre de Sesión</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Are you sure you want to logout?</p>
+                                    <p>Está seguro que quiere cerrar sesión?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-primary"
@@ -199,6 +203,9 @@
                             </div>
                         </div>
                     </div>
+
+                    {% block delete %}
+                    {% endblock%}
                 </div>
                 <!--- End Container Fluid-->
             </div>
@@ -226,7 +233,7 @@
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/ruang-admin.min.js') }}"></script>
-    
+
     {% block script %}{% endblock %}
 
 </body>

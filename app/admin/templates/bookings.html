@@ -4,6 +4,58 @@
 
 {% block body %}
 
-<h1>Reservas</h1>
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Listado reservas</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Reservas</li>
+    </ol>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <!-- Lista de usuarios -->
+        <div class="card">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Reservas</h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Usuario</th>
+                            <th>Película</th>
+                            <th>Función</th>
+                            <th># Tiq</th>
+                            <th>Sillas</th>
+                            <th>Medio de pago</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for r in reservas %}
+                        <tr>
+                            <!-- <td><a href="#">RA0449</a></td> -->
+                            <td>{{ r.booking_id }}</td>
+                            <td>{{ r.date }}</td>
+                            <td>{{ r.time }}</td>
+                            <td>{{ r.user_id }}</td>
+                            <td>{{ r.movie_id }}</td>
+                            <td>{{ r.screening_id }}</td>
+                            <td>{{ r.number_tickets }}</td>
+                            <td>{{ r.seats }}</td>
+                            <td>{{ r.payment }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer"></div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
