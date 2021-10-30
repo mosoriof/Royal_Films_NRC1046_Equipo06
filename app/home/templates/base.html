@@ -49,23 +49,23 @@
                     </div>
                     <div class="col-lg-5 px-5 text-end">
                         <div class="d-inline-flex align-items-center py-2">
-                            <a class="me-3" href="">
+                            <a class="me-3" href="#">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a class="me-3" href="">
+                            <a class="me-3" href="#">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                            <a class="me-3" href="">
+                            <a class="me-3" href="#">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a class="me-3" href="">
+                            <a class="me-3" href="#">
                                 <i class="fab fa-youtube"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0 px-lg-5">
-                    <a href="/" class="navbar-brand d-block d-lg-none">
+                    <a href="{{ url_for('home.index') }}" class="navbar-brand d-block d-lg-none">
                         <h1 class="m-0 text-primary text-uppercase">Royal Films</h1>
                     </a>
                     <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
@@ -74,20 +74,21 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="/"
+                            <a href="{{ url_for('home.index') }}"
                                 class="nav-item nav-link {{ 'active' if active_page == 'Home' else '' }}">Home</a>
-                            <a href="cartelera"
+                            <a href="{{ url_for('home.cartelera') }}"
+
                                 class="nav-item nav-link {{ 'active' if active_page == 'Cartelera' else '' }}">Cartelera</a>
-                            <a href="proximos"
+                            <a href="{{ url_for('home.proximos') }}"
                                 class="nav-item nav-link {{ 'active' if active_page == 'Proximamente' else '' }}">Próximamente</a>
-                            <a href="confiteria"
+                            <a href="{{ url_for('home.confiteria') }}"
                                 class="nav-item nav-link {{ 'active' if active_page == 'Confiteria' else '' }}">Confitería</a>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Nosotros</a>
+                                <a href="#" class="nav-link {{ 'active' if active_page == 'Nosotros' else '' }} dropdown-toggle" data-bs-toggle="dropdown">Nosotros</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="blog.html" class="dropdown-item">¿Quiénes somos?</a>
-                                    <a href="detail.html" class="dropdown-item">Términos y condiciones</a>
-                                    <a href="testimonial.html" class="dropdown-item">Preguntas frecuentes</a>
+                                    <a href="#" class="dropdown-item">¿Quiénes somos?</a>
+                                    <a href="{{ url_for('home.terminos') }}" class="dropdown-item">Términos y condiciones</a>
+                                    <a href="#" class="dropdown-item">Preguntas frecuentes</a>
                                 </div>
                             </div>
                             <a href="{{ url_for('home.buscar') }}" class="nav-item nav-link"><i
@@ -106,8 +107,8 @@
                         </div>
                         {% else %}
                         <div>
-                            <a href="register" class="btn btn-sm btn-light py-sm-2 px-sm-3 me-3">Registrarse</a>
-                            <a href="login" class="btn btn-sm btn-primary py-sm-2 px-sm-3">Iniciar Sesión</a>
+                            <a href="{{ url_for('home.register') }}" class="btn btn-sm btn-light py-sm-2 px-sm-3 me-3">Registrarse</a>
+                            <a href="{{ url_for('home.login') }}" class="btn btn-sm btn-primary py-sm-2 px-sm-3">Iniciar Sesión</a>
                         </div>
 
                         {% endif %}
@@ -135,7 +136,7 @@
                 <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Términos y condiciones</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('home.terminos') }}">Términos y condiciones</a></li>
                 <li class="list-inline-item"><a href="#">PQRS</a></li>
                 <li class="list-inline-item"><a href="#">Contacto</a></li>
             </ul>

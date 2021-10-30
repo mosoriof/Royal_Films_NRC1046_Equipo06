@@ -9,19 +9,19 @@
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="w-100" src="{{ url_for('static', filename='home/img/banner5.jpg') }}" alt="Image">
+                <a href="{{url_for('home.pelicula', id = 12)}}"><img class="w-100" src="{{ url_for('static', filename='home/img/banner5.jpg') }}" alt="Image"></a>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="{{ url_for('static', filename='home/img/banner2.jpg') }}" alt="Image">
+                <a href="{{url_for('home.pelicula', id = 1)}}"><img class="w-100" src="{{ url_for('static', filename='home/img/banner2.jpg') }}" alt="Image"></a>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="{{ url_for('static', filename='home/img/banner6.jpg') }}" alt="Image">
+                <a href="{{url_for('home.pelicula', id = 2)}}"><img class="w-100" src="{{ url_for('static', filename='home/img/banner6.jpg') }}" alt="Image"></a>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="{{ url_for('static', filename='home/img/banner7.jpg') }}" alt="Image">
+                <a href="{{url_for('home.pelicula', id = 7)}}"><img class="w-100" src="{{ url_for('static', filename='home/img/banner7.jpg') }}" alt="Image"></a>
             </div>
-            <div class="carousel-item">
-                <img class="w-100" src="{{ url_for('static', filename='home/img/banner1.jpg') }}" alt="Image">
+            <a href="{{url_for('home.pelicula', id = 4)}}"><div class="carousel-item">
+                <img class="w-100" src="{{ url_for('static', filename='home/img/banner1.jpg') }}" alt="Image"></a>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
@@ -50,8 +50,7 @@
                     <div class="team-overlay">
                         <div class="d-flex align-items-center justify-content-start">
                             <a class="btn btn-light btn-square rounded-circle mx-1" href="#">{{ m.length }}</a>
-                            <a class="btn btn-light btn-square rounded-circle mx-1" href="{{url_for('home.pelicula', id = m.movie_id)}}"><i
-                                    class="fa fa-film"></i></a>
+                            <a class="btn btn-light btn-square rounded-circle mx-1" href="{{url_for('home.pelicula', id = m.movie_id)}}"><i class="fa fa-film"></i></a>
                             <a class="btn btn-light btn-square rounded-circle mx-1" href="#"><i class="far fa-heart"></i></a>
                         </div>
                     </div>

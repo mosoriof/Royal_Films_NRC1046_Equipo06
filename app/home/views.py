@@ -16,7 +16,7 @@ def index():
     return render_template('index.html', movies=billboard, news=releases)
 
 
-@home.route('/login', methods=["GET", "POST"])
+@home.route('/login/', methods=["GET", "POST"])
 def login():
     form = LoginForm()
     if request.method == 'POST' and form.validate_on_submit():
@@ -41,7 +41,7 @@ def login():
     return render_template('login.html', form=form)
 
 
-@home.route('/register', methods=["GET", "POST"])
+@home.route('/register/', methods=["GET", "POST"])
 def register():
     form = SignupForm()
     if request.method == 'POST' and form.validate_on_submit():
@@ -66,31 +66,35 @@ def register():
         return render_template('register.html', form=form)
 
 
-@home.route('/cartelera')
+@home.route('/cartelera/')
 def cartelera():
     billboard = Movie.query.filter_by(status = 'active').all()
     return render_template('cartelera.html', movies=billboard)
 
 
-@home.route('/pelicula/<int:id>')
+@home.route('/pelicula/<int:id>/')
 def pelicula(id):
     movie = Movie.query.filter_by(movie_id=id).first()
     return render_template('pelicula.html', movie=movie)
 
-@home.route('/proximos')
+@home.route('/proximos/')
 def proximos():
     releases = Movie.query.filter_by(status = 'new').all()
     return render_template('proximos.html', movies=releases)    
 
-@home.route('/buscar')
+@home.route('/buscar/')
 def buscar():
     return render_template('buscar.html')
 
-@home.route('/confiteria')
+@home.route('/confiteria/')
 def confiteria():
     return render_template('confiteria.html')
 
 
-@home.route('/nosotros')
+@home.route('/nosotros/')
 def nosotros():
     return render_template('nosotros.html')
+
+@home.route('/terminos-condiciones/')
+def terminos():
+    return render_template('terminos.html')
